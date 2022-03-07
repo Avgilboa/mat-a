@@ -29,9 +29,16 @@ string nospaces(string input) {
 	return input;
 }
 
-
+bool palindrom(string s)
+{
+    if (s.length()==1){return true;}
+    if(s[0]==s[s.length()-1]){
+    return palindrom (s.substr(1,s.length()-2));}
+    return false;
+}
 TEST_CASE("Good input") {
-	//CHECK(nospaces(mat(9, 7, '@', '-')) == nospaces("@@@@@@@@@@-------@@-@@@@@-@@-@---@-@@-@@@@@-@@-------@@@@@@@@@@"));
+    for (char i =33; i<126;i++){
+        CHECK_FALSE(!(palindrom(nospaces(mat(5,9,i,i+1)))));}
     CHECK(mat(9,3,'a','b')=="this function works");
 }
 
